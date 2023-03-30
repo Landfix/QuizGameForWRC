@@ -15,4 +15,9 @@ public class Bootstrapper : MonoBehaviour
     {
         
     }
+
+    public void EndGame()
+    {
+        
+    }
 }
