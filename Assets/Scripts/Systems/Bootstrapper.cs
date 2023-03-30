@@ -1,19 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class Bootstrapper : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private BootstrapperConfig _bootstrapperConfig;
+    [SerializeField] private GameUI _gameUi;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _gameUi.Initialize(this,_bootstrapperConfig);
     }
 
     public void EndGame()
