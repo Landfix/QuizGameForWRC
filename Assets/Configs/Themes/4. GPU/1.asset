@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d5d91ca6d44f5389d74abb6b4e3344, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: dc4bfd9ade25e914e92c86ca317cc26e, type: 3}
+  _icon: {fileID: 21300000, guid: 3ef4922f5927424419aa35de6e5b8682, type: 3}
   _question: "\u0413\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043A\u0438\u0439
     \u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440 \u2014 \u044D\u0442\u043E:"
   _correctAnswer: "\u043E\u0434\u0438\u043D \u0438\u0437 \u0432\u0438\u0434\u043E\u0432
