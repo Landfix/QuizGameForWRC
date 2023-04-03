@@ -10,9 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32de73f3ed2d460c92ac5df6fa6517ef, type: 3}
-  m_Name: QuizConfigs
+  m_Name: Computer_config
   m_EditorClassIdentifier: 
-  _quizConfig:
+  _themeType: 0
+  _quizConfigs:
   - {fileID: 11400000, guid: c18f78599f2e7084b99a6b55693194c2, type: 2}
   - {fileID: 11400000, guid: 518a2b8ffda90fa48aed57505da2fe3e, type: 2}
   - {fileID: 11400000, guid: f60b0c6962a4b894bafb17abd21abccf, type: 2}
+  - {fileID: 11400000, guid: 113f054396f0c124c87483f4d8fe2d05, type: 2}
+  - {fileID: 11400000, guid: da385344e8be5904bbe2edd5279b6498, type: 2}
+  - {fileID: 11400000, guid: d39f3ca0be213c84e8f10e826f19f20f, type: 2}
+  - {fileID: 11400000, guid: c1f350c78c3b22d4e8e5f6807cb2cd54, type: 2}

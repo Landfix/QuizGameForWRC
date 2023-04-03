@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Config
 {
     [CreateAssetMenu(fileName = "QuizConfig",menuName = "Configs/QuizConfig")]
     public class QuizConfig : ScriptableObject

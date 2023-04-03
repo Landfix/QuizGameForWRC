@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using Systems;
+using Config;
+using UnityEngine;
 
-namespace DefaultNamespace
+namespace UI
 {
     public class GameUI : MonoBehaviour
     {

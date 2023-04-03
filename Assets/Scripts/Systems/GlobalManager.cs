@@ -1,7 +1,6 @@
-﻿using DefaultNamespace.Utils;
-using UnityEngine;
+﻿using Utils;
 
-namespace DefaultNamespace
+namespace Systems
 {
     public class GlobalManager : SingletonMono<GlobalManager>
     {

@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace DefaultNamespace
+namespace Systems
 {
     [Serializable]
     public class Preferences
     {
+        public int theme = 0;
+        
         const string PreferencesKey = "preferences";
 
         bool _isInitialized = false;
@@ -42,11 +43,18 @@ namespace DefaultNamespace
 
         public void Copy(Preferences other)
         {
+            theme = other.theme;
         }
 
         public void SetDefaultPrefs()
         {
             Copy(new Preferences());
+            SavePreferences();
+        }
+
+        public void SetTheme(int value)
+        {
+            theme = value;
             SavePreferences();
         }
 

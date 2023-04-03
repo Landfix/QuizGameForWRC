@@ -1,69 +1,72 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Systems;
+using Config;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DefaultNamespace
+public class QuizContainer : MonoBehaviour
 {
-    public class QuizContainer : MonoBehaviour
+    [SerializeField] private ThemeConfigs _themeConfigs;
+    [Header("Quiz Elements")]
+    [SerializeField] private Image _icon;
+    [SerializeField] private TextMeshProUGUI _questionText;
+    [SerializeField] private QuizButton[] _quizButtons = new QuizButton[4];
+
+    private List<QuizConfig> _quizConfigArray;
+    private QuizConfig _selectedQuizConfig;
+    private Preferences _cachedPreferences;
+
+    public void Initialize()
     {
-        [SerializeField] private QuizConfigs _quizConfigs;
-        [Header("Quiz Elements")]
-        [SerializeField] private Image _icon;
-        [SerializeField] private TextMeshProUGUI _questionText;
-        [SerializeField] private QuizButton[] _quizButtons = new QuizButton[4];
+        _cachedPreferences = GlobalManager.I.Preferences;
+        ThemeConfig themeConfig = _themeConfigs.ThemeConfig.
+            FirstOrDefault(x => x.ThemeType == (ThemeType)_cachedPreferences.theme);
+        _quizConfigArray = themeConfig.QuizConfigs.ToList();
+        SelectRandomQuizElement();
 
-        private List<QuizConfig> _quizConfigArray;
-        private QuizConfig _selectedQuizConfig;
+        SetData();
+        UpdateData();
+    }
 
-        public void Initialize()
+    private void UpdateData()
+    {
+        for (int i = 0; i < _quizButtons.Length; i++)
         {
-            _quizConfigArray = _quizConfigs.QuizConfig.ToList();
-            SelectRandomQuizElement();
-
-            SetData();
-            UpdateData();
+            _quizButtons[i].UpdateQuiz(_selectedQuizConfig.Answers[i],_selectedQuizConfig.CorrectAnswer);
         }
-
-        private void UpdateData()
-        {
-            for (int i = 0; i < _quizButtons.Length; i++)
-            {
-                _quizButtons[i].UpdateQuiz(_selectedQuizConfig.Answers[i],_selectedQuizConfig.CorrectAnswer);
-            }
             
-            _icon.sprite = _selectedQuizConfig.Icon;
-            _questionText.text = _selectedQuizConfig.Question;
-        }
+        _icon.sprite = _selectedQuizConfig.Icon;
+        _questionText.text = _selectedQuizConfig.Question;
+    }
 
-        private void SetData()
+    private void SetData()
+    {
+        foreach (QuizButton quizButton in _quizButtons)
         {
-            foreach (QuizButton quizButton in _quizButtons)
-            {
-                quizButton.Initialize();
-                quizButton.ClickedCorrectByButton += ClickedCorrectByButton;
-            }
-            UpdateData();
+            quizButton.Initialize();
+            quizButton.ClickedCorrectByButton += ClickedCorrectByButton;
         }
+        UpdateData();
+    }
 
-        private void ClickedCorrectByButton(bool isCorrect)
-        {
-            SelectRandomQuizElement();
-            UpdateData();
-            //todo recast
-            // if (isCorrect)
-            // {
-            //     SelectRandomQuizElement();
-            //     UpdateData();
-            // }
-        }
+    private void ClickedCorrectByButton(bool isCorrect)
+    {
+        SelectRandomQuizElement();
+        UpdateData();
+        //todo recast
+        // if (isCorrect)
+        // {
+        //     SelectRandomQuizElement();
+        //     UpdateData();
+        // }
+    }
 
-        private void SelectRandomQuizElement()
-        {
-            int range = Random.Range(0, _quizConfigArray.Count);
-            _selectedQuizConfig = _quizConfigArray[range];
-            _quizConfigArray.RemoveAt(range);
-        }
+    private void SelectRandomQuizElement()
+    {
+        int range = Random.Range(0, _quizConfigArray.Count);
+        _selectedQuizConfig = _quizConfigArray[range];
+        _quizConfigArray.RemoveAt(range);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Config
 {
     [CreateAssetMenu(fileName = "BootstrapperConfig",menuName = "Configs/BootstrapperConfig")]
     public class BootstrapperConfig : ScriptableObject

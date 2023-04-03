@@ -1,21 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace;
+using Config;
+using UI;
 using UnityEngine;
 
-public class Bootstrapper : MonoBehaviour
+namespace Systems
 {
-    [SerializeField] private BootstrapperConfig _bootstrapperConfig;
-    [SerializeField] private GameUI _gameUi;
-
-    private void Start()
+    public class Bootstrapper : MonoBehaviour
     {
-        _gameUi.Initialize(this,_bootstrapperConfig);
-    }
+        [SerializeField] private BootstrapperConfig _bootstrapperConfig;
+        [SerializeField] private GameUI _gameUi;
 
-    public void EndGame()
-    {
+        private void Start()
+        {
+            _gameUi.Initialize(this,_bootstrapperConfig);
+        }
+
+        public void EndGame()
+        {
         
+        }
     }
 }
