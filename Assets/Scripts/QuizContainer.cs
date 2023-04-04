@@ -4,10 +4,13 @@ using Systems;
 using Config;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuizContainer : MonoBehaviour
 {
+    private const string MenuScene = "Menu";
+    
     [SerializeField] private ThemeConfigs _themeConfigs;
     [Header("Quiz Elements")]
     [SerializeField] private Image _icon;
@@ -46,21 +49,22 @@ public class QuizContainer : MonoBehaviour
         foreach (QuizButton quizButton in _quizButtons)
         {
             quizButton.Initialize();
-            quizButton.ClickedCorrectByButton += ClickedCorrectByButton;
+            quizButton.ClickedCorrectByButton += UpdateQuiz;
         }
         UpdateData();
     }
 
-    private void ClickedCorrectByButton(bool isCorrect)
+    public void UpdateQuiz(bool isCorrect)
     {
-        SelectRandomQuizElement();
-        UpdateData();
-        //todo recast
-        // if (isCorrect)
-        // {
-        //     SelectRandomQuizElement();
-        //     UpdateData();
-        // }
+        if (_quizConfigArray.Count <= 0)
+        {
+            SceneManager.LoadScene(MenuScene);
+        }
+        else
+        {
+            SelectRandomQuizElement();
+            UpdateData();   
+        }
     }
 
     private void SelectRandomQuizElement()

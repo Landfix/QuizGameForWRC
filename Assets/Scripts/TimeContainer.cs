@@ -13,7 +13,8 @@ public class TimeContainer : MonoBehaviour
         
     public void Initialize(float duration)
     {
+        _barImg.fillAmount = 1;
         _duration = duration;
-        _barImg.DOFillAmount(0, _duration).OnComplete(() => { TimeIsUp?.Invoke();});
+        _barImg.DOFillAmount(0, _duration).OnComplete(() => { TimeIsUp?.Invoke();}).SetEase(Ease.Linear);
     }
 }
