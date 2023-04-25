@@ -11,11 +11,11 @@ namespace Infrastructure
     {
         private readonly GameSystemHandlers _gameSystemHandlers;
 
-        public GameManager(GameUi gameUi, List<string> uniqueWords, ContentConfig contentConfig)
+        public GameManager(GameUi gameUi, ContentConfigs contentConfigs)
         {
-            _gameSystemHandlers = new GameSystemHandlers(uniqueWords,contentConfig);
+            _gameSystemHandlers = new GameSystemHandlers(contentConfigs);
             gameUi.Initialize(_gameSystemHandlers);
-            _gameSystemHandlers.SelectNewWord();
+            _gameSystemHandlers.SelectNewContent();
         }
 
         public void Update() => 

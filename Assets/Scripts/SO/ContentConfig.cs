@@ -6,16 +6,11 @@ namespace SO
     public class ContentConfig : ScriptableObject
     {
         [Header("Content")]
-        [SerializeField,TextArea] private string _content;
+        [SerializeField,TextArea] private string _question;
+        [SerializeField] private string _answer;
 
-        [Header("Parameters Game")]
-        [SerializeField,Range(3,10)] private int _wordLength;
-
-        [SerializeField, Range(3, 10)] private int _numberOfAttempts;
-        
-        public string Content => _content;
-        public int WordLength => _wordLength;
-        public int NumberOfAttempts => _numberOfAttempts;
+        public string Question => _question;
+        public string Answer => _answer.ToUpper();
         
     }
 }

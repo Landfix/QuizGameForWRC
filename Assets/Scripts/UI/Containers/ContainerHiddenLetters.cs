@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Systems;
+using SO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,18 +24,18 @@ namespace UI.Containers
         public void Initialize(GameSystemHandlers systemHandlers)
         {
             _systemHandlers = systemHandlers;
-            _systemHandlers.SelectedWord += SelectedWord;
+            _systemHandlers.SelectedContent += SelectedContent;
             CreatedCards += _systemHandlers.LetterOpeningSystem.UpdateCards;
         }
 
-        private void SelectedWord(string word)
+        private void SelectedContent(ContentConfig contentConfig)
         {
             CardCleaning();
-            _currentWord = word;
+            _currentWord = contentConfig.Answer;
             float cellValue = (_cardContent.sizeDelta.x - _gridGroup.spacing.x) / (_currentWord.Length + ExtraStep);
             _gridGroup.cellSize = new Vector2(cellValue, cellValue);
 
-            InitializeCards(word);
+            InitializeCards(_currentWord);
         }
 
         private void InitializeCards(string word)
@@ -64,7 +65,7 @@ namespace UI.Containers
 
         private void OnDisable()
         {
-            _systemHandlers.SelectedWord -= SelectedWord;
+            _systemHandlers.SelectedContent -= SelectedContent;
             CreatedCards -= _systemHandlers.LetterOpeningSystem.UpdateCards;
         }
     }

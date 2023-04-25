@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Systems;
+using SO;
 using UnityEngine;
 
 namespace UI.Containers
@@ -7,6 +8,7 @@ namespace UI.Containers
     public class AlphabeticButtonContainer : MonoBehaviour
     {
         private const string EnglishAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private const string RussianAlphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
         
         [SerializeField] private RectTransform _alphabetContent;
         [SerializeField] private LetterButton _letterButtonPrefab;
@@ -16,21 +18,21 @@ namespace UI.Containers
         
         public void Initialize(GameSystemHandlers systemHandlers)
         {
-            systemHandlers.SelectedWord += UpdateLetterButtons;
+            systemHandlers.SelectedContent += UpdateLetterButtons;
             _letterOpeningSystem = systemHandlers.LetterOpeningSystem;
             InitializeLetterButtons();
         }
 
-        private void InitializeLetterButtons()
-        {
-            for (int i = 0; i < EnglishAlphabet.Length; i++) 
-                CreateLetterButton(i);
-        }
-
-        private void UpdateLetterButtons(string obj)
+        private void UpdateLetterButtons(ContentConfig obj)
         {
             foreach (LetterButton letterButton in _letterButtons)
                 letterButton.UpdateLetterButton();
+        }
+
+        private void InitializeLetterButtons()
+        {
+            for (int i = 0; i < RussianAlphabet.Length; i++) 
+                CreateLetterButton(i);
         }
 
         private void CreateLetterButton(int index)
@@ -38,7 +40,7 @@ namespace UI.Containers
             LetterButton newLetterButton = Instantiate(_letterButtonPrefab, _alphabetContent);
             _letterButtons.Add(newLetterButton);
             
-            newLetterButton.Initialize(EnglishAlphabet[index]);
+            newLetterButton.Initialize(RussianAlphabet[index]);
             newLetterButton.ClickedButton += _letterOpeningSystem.LetterOpenCheck;
         }
 
