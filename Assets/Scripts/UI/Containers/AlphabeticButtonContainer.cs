@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Systems;
 using SO;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace UI.Containers
 
         private List<LetterButton> _letterButtons = new List<LetterButton>();
         private LetterOpeningSystem _letterOpeningSystem;
-        
+
         public void Initialize(GameSystemHandlers systemHandlers)
         {
             systemHandlers.SelectedContent += UpdateLetterButtons;
@@ -27,6 +28,29 @@ namespace UI.Containers
         {
             foreach (LetterButton letterButton in _letterButtons)
                 letterButton.UpdateLetterButton();
+        }
+
+        public void HideLetterButtons(char[] answerValues)
+        {
+            List<LetterButton> resultLetters = new List<LetterButton>();
+            List<LetterButton> hideLetters = new List<LetterButton>();
+
+            int index = 0;
+            for (int i = 0; i < answerValues.Length; i++)
+            {
+                int range = Random.Range(0, _letterButtons.Count);
+                hideLetters.Add(_letterButtons[range]);
+            }
+
+            while (index < hideLetters.Count - 1)
+            {
+                var isRepeatLetter = answerValues.Any(x => x == hideLetters[index].Letter);
+                if (!isRepeatLetter) 
+                    resultLetters.Add(hideLetters[index]);
+                
+                index++;
+            }
+            resultLetters.ForEach(x => x.HideLetter());
         }
 
         private void InitializeLetterButtons()

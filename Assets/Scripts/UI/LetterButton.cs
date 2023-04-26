@@ -11,6 +11,8 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _letterAlphabetText;
 
         private char _letter;
+
+        public char Letter => _letter;
         
         public event Action<char> ClickedButton;
         
@@ -18,16 +20,19 @@ namespace UI
         {
             _letterAlphabetText.text = letter.ToString();
             _letter = letter;
-            _letterAlphabetButton.onClick.AddListener(ClickButton);
+            _letterAlphabetButton.onClick.AddListener(OnClickHideButton);
         }
 
-        private void ClickButton()
+        private void OnClickHideButton()
         {
             ClickedButton?.Invoke(_letter);
-            _letterAlphabetButton.interactable = false;
+           HideLetter();
         }
 
         public void UpdateLetterButton() => 
             _letterAlphabetButton.interactable = true;
+
+        public void HideLetter() => 
+            _letterAlphabetButton.interactable = false;
     }
 }

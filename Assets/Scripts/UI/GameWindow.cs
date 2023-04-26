@@ -14,6 +14,7 @@ namespace UI
         
         [SerializeField] private ContainerHiddenLetters _containerHiddenLetters;
         [SerializeField] private AlphabeticButtonContainer _alphabeticButtonContainer;
+        [SerializeField] private HintsContainer _hintsContainer;
         [SerializeField] private WinContainer _winContainer;
         [Header("Header")]
         [SerializeField] private TextMeshProUGUI _numberOfAttemptsText;
@@ -39,6 +40,7 @@ namespace UI
         {
             _containerHiddenLetters.Initialize(_systemHandlers);
             _alphabeticButtonContainer.Initialize(_systemHandlers);
+            _hintsContainer.Initialize(_systemHandlers,_alphabeticButtonContainer);
             _winContainer.Initialize();
             _winContainer.gameObject.SetActive(false);
         }
