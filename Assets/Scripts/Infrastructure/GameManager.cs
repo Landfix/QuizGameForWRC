@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Systems;
+using Programmer_container;
 using SO;
 using UI;
 using UnityEngine;
@@ -11,9 +12,10 @@ namespace Infrastructure
     {
         private readonly GameSystemHandlers _gameSystemHandlers;
 
-        public GameManager(GameUi gameUi, ContentConfigs contentConfigs)
+        public GameManager(GameUi gameUi, Programmer programmer, ContentConfigs contentConfigs)
         {
             _gameSystemHandlers = new GameSystemHandlers(contentConfigs);
+            programmer.Initialize(_gameSystemHandlers);
             gameUi.Initialize(_gameSystemHandlers);
             _gameSystemHandlers.SelectNewContent();
         }

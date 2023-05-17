@@ -23,6 +23,8 @@ namespace Systems
         public event Action<int> GotAttempts;
 
         public event Action WonGame;
+        public event Action WonPart;
+        public event Action Lost;
         public event Action<ContentConfig> SelectedContent;
 
         public LetterOpeningSystem LetterOpeningSystem => _letterOpeningSystem;
@@ -49,8 +51,9 @@ namespace Systems
                 GotAttempts?.Invoke(_numberOfAttempts);
             }
             else
-                RestartScene();
-
+            {
+                Lost?.Invoke();
+            }
         }
 
         public void SelectNewContent()
@@ -62,6 +65,7 @@ namespace Systems
                 return;
             }
 
+            WonPart?.Invoke();
             SelectedContent?.Invoke(_currentContentConfig);
             GotQuestion?.Invoke(_currentContentConfig.Question);
             _numberOfAttempts = _savedNumberOfAttempts;
@@ -90,9 +94,6 @@ namespace Systems
 
             SelectNewContent();
         }
-
-        private void RestartScene() =>
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         public void Exit()
         {
