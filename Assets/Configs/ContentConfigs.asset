@@ -15,4 +15,4 @@ MonoBehaviour:
   _contents:
   - {fileID: 11400000, guid: 0cf467cb6ac4ad348a73d5ceda244ccf, type: 2}
   - {fileID: 11400000, guid: 575716396a691fd4f87528319b8184f2, type: 2}
-  _numberOfAttempts: 5
+  _numberOfAttempts: 3
