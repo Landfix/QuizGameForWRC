@@ -1,5 +1,6 @@
 ﻿using System;
 using Systems;
+using DG.Tweening;
 using UnityEngine;
 
 namespace UI
@@ -22,22 +23,21 @@ namespace UI
         private void WonPart()
         {
             ShowCurtain();
-            // _correctIconTransform.DOScale(Vector2.one * 3, 0.4f).SetEase(Ease.Flash)
-            //     .OnComplete(GlobalManager.I.LevelSkip);
+            _correctIconTransform.DOScale(Vector2.one * 3, 0.3f).SetEase(Ease.Flash);
         }
 
         private void ShowCurtain()
         {
-            // _canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.Flash);
-            // _canvasGroup.interactable = true;
-            // _canvasGroup.blocksRaycasts = true;
+            _canvasGroup.DOFade(1f, 0.3f).SetEase(Ease.Flash).OnComplete(HideCurtain);
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
         }
 
-        public void HideCurtain()
+        private void HideCurtain()
         {
-            // _canvasGroup.DOFade(0f, 1f).SetEase(Ease.Flash);
-            // _canvasGroup.interactable = false;
-            // _canvasGroup.blocksRaycasts = false;
+            _canvasGroup.DOFade(0f, 0.1f).SetEase(Ease.Flash);
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
 
         private void SharpHideCurtain()

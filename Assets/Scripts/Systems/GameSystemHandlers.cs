@@ -39,7 +39,7 @@ namespace Systems
             _letterOpeningSystem = new LetterOpeningSystem();
 
             _letterOpeningSystem.AttemptTaken += AttemptTaken;
-            _letterOpeningSystem.GuessedWord += AddNewPoints;
+            _letterOpeningSystem.GuessedWord += GuessedWord;
             GotAttempts?.Invoke(_numberOfAttempts);
         }
 
@@ -65,7 +65,6 @@ namespace Systems
                 return;
             }
 
-            WonPart?.Invoke();
             SelectedContent?.Invoke(_currentContentConfig);
             GotQuestion?.Invoke(_currentContentConfig.Question);
             _numberOfAttempts = _savedNumberOfAttempts;
@@ -87,18 +86,18 @@ namespace Systems
             return contentConfig;
         }
 
-        private void AddNewPoints()
+        private void GuessedWord()
         {
             _numberOfPoints += _numberOfAttempts;
             GotPoints?.Invoke(_numberOfPoints);
-
+            WonPart?.Invoke();
             SelectNewContent();
         }
 
         public void Exit()
         {
             _letterOpeningSystem.AttemptTaken -= AttemptTaken;
-            _letterOpeningSystem.GuessedWord -= AddNewPoints;
+            _letterOpeningSystem.GuessedWord -= GuessedWord;
         }
     }
 }

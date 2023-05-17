@@ -1,4 +1,5 @@
 ﻿using Systems;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,6 @@ namespace UI
     public class LoseCurtain : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _canvasGroup;
-        [SerializeField] private RectTransform _correctIconTransform;
 
         private GameSystemHandlers _gameSystemHandlers;
         
@@ -21,16 +21,16 @@ namespace UI
 
         private void ShowCurtain()
         {
-            // _canvasGroup.DOFade(1f, 0.3f).SetEase(Ease.Flash).OnComplete(HideCurtain);
-            // _canvasGroup.interactable = true;
-            // _canvasGroup.blocksRaycasts = true;
+            _canvasGroup.DOFade(1f, 0.3f).SetEase(Ease.Flash).OnComplete(HideCurtain);
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
         }
 
         private void HideCurtain()
         {
-            // _canvasGroup.DOFade(0f, 0.3f).SetEase(Ease.Flash);
-            // _canvasGroup.interactable = false;
-            // _canvasGroup.blocksRaycasts = false;
+            _canvasGroup.DOFade(0f, 0.3f).SetEase(Ease.Flash).OnComplete(RestartScene);
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
         
         private void SharpHideCurtain()
