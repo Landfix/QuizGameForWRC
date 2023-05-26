@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using SO;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Systems
 {
@@ -12,11 +10,11 @@ namespace Systems
         private List<ContentConfig> _contents;
         private ContentConfig _currentContentConfig;
 
-        private int _numberOfPoints;
         private int _numberOfAttempts;
         private string _currentlySelectedWord;
-
         private int _savedNumberOfAttempts;
+        
+        private Preferences _cachedPreferences;
 
         public event Action<int> GotPoints;
         public event Action<string> GotQuestion;
@@ -32,10 +30,9 @@ namespace Systems
         public GameSystemHandlers(ContentConfigs contentConfigs)
         {
             _contents = new List<ContentConfig>(contentConfigs.Contents);
+            _cachedPreferences = GlobalManager.I.Preferences;
             _numberOfAttempts = contentConfigs.NumberOfAttempts;
             _savedNumberOfAttempts = _numberOfAttempts;
-            _numberOfPoints = 0;
-
             _letterOpeningSystem = new LetterOpeningSystem();
 
             _letterOpeningSystem.AttemptTaken += AttemptTaken;
@@ -88,8 +85,8 @@ namespace Systems
 
         private void GuessedWord()
         {
-            _numberOfPoints += _numberOfAttempts;
-            GotPoints?.Invoke(_numberOfPoints);
+            _cachedPreferences.AddPoints(_numberOfAttempts);
+            GotPoints?.Invoke(_cachedPreferences.points);
             WonPart?.Invoke();
             SelectNewContent();
         }
