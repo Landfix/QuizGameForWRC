@@ -29,10 +29,17 @@ namespace UI
            HideLetter();
         }
 
-        public void UpdateLetterButton() => 
+        public void UpdateLetterButton()
+        {
             _letterAlphabetButton.interactable = true;
+            _letterAlphabetText.alpha = 1f;
+        }
 
-        public void HideLetter() => 
+        public void HideLetter()
+        { 
             _letterAlphabetButton.interactable = false;
+            _letterAlphabetText.alpha = 0.5f;
+        }
+
     }
 }

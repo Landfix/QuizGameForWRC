@@ -7,7 +7,7 @@ namespace UI.Containers
 {
     public class HintsContainer : MonoBehaviour
     {
-        [SerializeField] private Button _getLetterBtn;
+        [SerializeField] private Button _openLetterBtn;
         [SerializeField] private Button _hideLettersBtn;
 
         private AlphabeticButtonContainer _alphabeticButtonContainer;
@@ -18,28 +18,23 @@ namespace UI.Containers
         {
             _systemHandlers = systemHandlers;
             _alphabeticButtonContainer = alphabeticButtonContainer;
-            _getLetterBtn.onClick.AddListener(OnClickGetLetter);
+            _openLetterBtn.onClick.AddListener(OnClickOpenLetter);
             _hideLettersBtn.onClick.AddListener(OnClickHideLetters);
             _systemHandlers.SelectedContent += SelectedContent;
         }
 
-        private void SelectedContent(ContentConfig config)
-        {
-            _answer = config.Answer;
-        }
+        private void SelectedContent(ContentConfig config) => _answer = config.Answer;
 
-        private void OnClickHideLetters()
-        {
+        private void OnClickHideLetters() => 
             _alphabeticButtonContainer.HideLetterButtons(_answer.ToCharArray());
-        }
 
-        private void OnClickGetLetter()
-        {
+        private void OnClickOpenLetter() => 
             _systemHandlers.LetterOpeningSystem.OpenRandomLetter();
-        }
 
         private void OnDestroy()
         {
+            _openLetterBtn.onClick.RemoveListener(OnClickOpenLetter);
+            _hideLettersBtn.onClick.RemoveListener(OnClickHideLetters);
             _systemHandlers.SelectedContent -= SelectedContent;
         }
     }
