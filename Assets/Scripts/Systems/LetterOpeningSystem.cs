@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UI;
+using Random = UnityEngine.Random;
 
 namespace Systems
 {
@@ -39,7 +40,20 @@ namespace Systems
             if (!anyOpened) 
                 AttemptTaken?.Invoke();
         }
-        
+
+        public void OpenRandomLetter()
+        {
+            int range = Random.Range(0, _cards.Count);
+            if (_cards[range].IsShown)
+            {
+                OpenRandomLetter();
+            }
+            else
+            {
+                _cards[range].ShowText();
+            }
+        }
+
         private bool CheckWin() => 
             _cards.All(x => x.IsShown);
     }

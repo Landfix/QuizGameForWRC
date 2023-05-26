@@ -1,5 +1,4 @@
-﻿using System;
-using Systems;
+﻿using Systems;
 using SO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +20,7 @@ namespace UI.Containers
             _alphabeticButtonContainer = alphabeticButtonContainer;
             _getLetterBtn.onClick.AddListener(OnClickGetLetter);
             _hideLettersBtn.onClick.AddListener(OnClickHideLetters);
-            systemHandlers.SelectedContent += SelectedContent;
+            _systemHandlers.SelectedContent += SelectedContent;
         }
 
         private void SelectedContent(ContentConfig config)
@@ -36,7 +35,12 @@ namespace UI.Containers
 
         private void OnClickGetLetter()
         {
-            
+            _systemHandlers.LetterOpeningSystem.OpenRandomLetter();
+        }
+
+        private void OnDestroy()
+        {
+            _systemHandlers.SelectedContent -= SelectedContent;
         }
     }
 }

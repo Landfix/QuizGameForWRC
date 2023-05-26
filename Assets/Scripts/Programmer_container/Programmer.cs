@@ -26,8 +26,11 @@ namespace Programmer_container
                 case 1:
                     _animator.SetSmokesHeavilyState();
                     break;
-                case 2: 
+                case 2:
                     _animator.SetFaintlySmokesState();
+                    break;
+                case 3:
+                    _animator.SetIdleState();
                     break;
             }
         }
