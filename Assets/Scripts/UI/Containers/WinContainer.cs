@@ -6,19 +6,30 @@ namespace UI.Containers
 {
     public class WinContainer : MonoBehaviour
     {
+        private const string MenuScene = "Menu";
+        
         [SerializeField] private Button _playAgainBtn;
-        [SerializeField] private Button _quitBtn;
+        [SerializeField] private Button _menuBtn;
 
         public void Initialize()
         {
-            _playAgainBtn.onClick.AddListener(PlayAgain);
-            _quitBtn.onClick.AddListener(Quit);
+            _playAgainBtn.onClick.AddListener(OnClickPlayAgain);
+            _menuBtn.onClick.AddListener(OnClickMenu);
         }
 
-        private void Quit() => 
-            Application.Quit();
+        private void OnClickMenu()
+        {
+            _playAgainBtn.onClick.RemoveListener(OnClickPlayAgain);
+            _menuBtn.onClick.RemoveListener(OnClickMenu);
+            SceneManager.LoadScene(MenuScene);
+        }
 
-        private void PlayAgain() => 
+        private void OnClickPlayAgain()
+        {
+            _playAgainBtn.onClick.RemoveListener(OnClickPlayAgain);
+            _menuBtn.onClick.RemoveListener(OnClickMenu);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
     }
 }
