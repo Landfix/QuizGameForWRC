@@ -14,7 +14,8 @@ namespace UI.Containers
         public void Initialize()
         {
             _playAgainBtn.onClick.AddListener(OnClickPlayAgain);
-            _menuBtn.onClick.AddListener(OnClickMenu);
+            //todo menu
+            //_menuBtn.onClick.AddListener(OnClickMenu);
         }
 
         private void OnClickMenu()

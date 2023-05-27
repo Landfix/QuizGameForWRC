@@ -2,6 +2,7 @@
 using System.Linq;
 using Systems;
 using SO;
+using Sounds_container;
 using UnityEngine;
 
 namespace UI.Containers
@@ -10,7 +11,9 @@ namespace UI.Containers
     {
         private const string EnglishAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private const string RussianAlphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-        
+
+        [SerializeField] private SoundEffect _clickEffect;
+        [Header("Components")]
         [SerializeField] private RectTransform _alphabetContent;
         [SerializeField] private LetterButton _letterButtonPrefab;
 
@@ -65,13 +68,19 @@ namespace UI.Containers
             _letterButtons.Add(newLetterButton);
             
             newLetterButton.Initialize(RussianAlphabet[index]);
-            newLetterButton.ClickedButton += _letterOpeningSystem.LetterOpenCheck;
+            newLetterButton.ClickedButton += ClickedButton;
+        }
+
+        private void ClickedButton(char c)
+        {
+            _letterOpeningSystem.LetterOpenCheck(c);
+            _clickEffect.PlayClip();
         }
 
         private void OnDisable()
         {
             foreach (LetterButton letterButton in _letterButtons)
-                letterButton.ClickedButton -= _letterOpeningSystem.LetterOpenCheck;
+                letterButton.ClickedButton -= ClickedButton;
         }
     }
 }
