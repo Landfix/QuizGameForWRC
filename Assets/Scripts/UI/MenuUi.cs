@@ -12,7 +12,7 @@ namespace UI
         [SerializeField] private SoundEffect _soundEffect;
 
         [Header("Components")]
-        [SerializeField] private TrophyElement _trophyElement;
+        [SerializeField] private TrophyContainer _trophyContainer;
         [SerializeField] private SoundButton _soundButton;
         [SerializeField] private Button _playBtn;
 
@@ -22,7 +22,7 @@ namespace UI
         {
             _preferences = GlobalManager.I.Preferences;
             _playBtn.onClick.AddListener(OnClickPlay);
-            _trophyElement.Initialize(_preferences);
+            _trophyContainer.Initialize(_preferences);
             _soundButton.Initialize(_preferences,_soundEffect);
             _soundButton.ChangedSound += GlobalManager.I.MusicEffect.IsPlaybackMusic;
         }

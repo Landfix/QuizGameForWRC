@@ -9,7 +9,7 @@ namespace UI
     [RequireComponent(typeof(Button))]
     public class SoundButton : MonoBehaviour
     {
-        [SerializeField] private Button _soundBtn;
+        [SerializeField] private Button _button;
         [Header("Sprites")]
         [SerializeField] private Sprite _soundSprite;
         [SerializeField] private Sprite _withoutSoundSprite;
@@ -24,9 +24,9 @@ namespace UI
         {
             _soundEffect = soundEffect;
             _preferences = preferences;
-            _soundBtn.onClick.AddListener(OnClickSound);
+            _button.onClick.AddListener(OnClickSound);
             _isSoundPlayback = _preferences.soundPlayback == 1;
-            _soundBtn.image.sprite = _isSoundPlayback ? _soundSprite : _withoutSoundSprite;
+            _button.image.sprite = _isSoundPlayback ? _soundSprite : _withoutSoundSprite;
             _preferences.SwitchedSoundByButton += SwitchedSoundByButton;
         }
 
@@ -35,13 +35,13 @@ namespace UI
             if (isActivate)
             {
                 _isSoundPlayback = true;
-                _soundBtn.image.sprite = _soundSprite;
+                _button.image.sprite = _soundSprite;
                 ChangedSound?.Invoke(isActivate);
             }
             else
             {
                 _isSoundPlayback = false;
-                _soundBtn.image.sprite = _withoutSoundSprite;
+                _button.image.sprite = _withoutSoundSprite;
                 ChangedSound?.Invoke(isActivate);
             }
         }
@@ -52,12 +52,9 @@ namespace UI
                 _soundEffect.PlayClip();
             
             _isSoundPlayback = !_isSoundPlayback;
-            _soundBtn.image.sprite = _isSoundPlayback ? _soundSprite : _withoutSoundSprite;
+            _button.image.sprite = _isSoundPlayback ? _soundSprite : _withoutSoundSprite;
             ChangedSound?.Invoke(_isSoundPlayback);
             _preferences.SetSoundPlayback(_isSoundPlayback ? 1 : -1);
         }
-
-        private void OnDestroy() => 
-            _preferences.TurnedOffSoundToAds -= SwitchedSoundByButton;
     }
 }
