@@ -4,18 +4,23 @@ using SO;
 using TMPro;
 using UI.Containers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace UI
 {
     public class GameWindow : MonoBehaviour
     {
         private const string AttemptsHash = "{0} попыток";
+        private const string MenuScene = "Menu";
         
+        [Header("Components")]
         [SerializeField] private ContainerHiddenLetters _containerHiddenLetters;
         [SerializeField] private AlphabeticButtonContainer _alphabeticButtonContainer;
         [SerializeField] private HintsContainer _hintsContainer;
         [SerializeField] private WinContainer _winContainer;
-        [Header("Header")]
+        [Header("Header")] 
+        [SerializeField] private Button _menuBtn;
         [SerializeField] private TextMeshProUGUI _numberOfAttemptsText;
         [SerializeField] private TextMeshProUGUI _numberOfPointsText;
         [SerializeField] private TextMeshProUGUI _questionText;
@@ -27,10 +32,17 @@ namespace UI
             InitializeContainers();
             SetNumberOfPoints(GlobalManager.I.Preferences.points);
             
+            _menuBtn.onClick.AddListener(OnClickMenu);
             _systemHandlers.GotPoints += SetNumberOfPoints;
             _systemHandlers.GotAttempts += SetNumberOfAttempts;
             _systemHandlers.WonGame += OpenWinContainer;
             _systemHandlers.GotQuestion += SetQuestion;
+        }
+
+        private void OnClickMenu()
+        {
+            _menuBtn.onClick.RemoveListener(OnClickMenu);
+            SceneManager.LoadScene(MenuScene);
         }
 
         private void SetQuestion(string question) => 
