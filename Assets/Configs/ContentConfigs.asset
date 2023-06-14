@@ -19,4 +19,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e2d90898e38b7a54988f9621938c561e, type: 2}
   - {fileID: 11400000, guid: dacb811319f9afa449a4a69554a5611e, type: 2}
   - {fileID: 11400000, guid: 9f01889dac0ec7d438dc5c2c30960ffb, type: 2}
+  - {fileID: 11400000, guid: 3da9d5a2d90819c43b961ec61fd5b2b6, type: 2}
+  - {fileID: 11400000, guid: 99f137c07eac8514cb32125e3c06cded, type: 2}
+  - {fileID: 11400000, guid: 6182dbf11ea66334c9824f1c72c5f4b7, type: 2}
+  - {fileID: 11400000, guid: 59ac60bf11202cf4fbffecdd8cda10d0, type: 2}
+  - {fileID: 11400000, guid: 1e54e31a249a8554ca441e3bc9bb2860, type: 2}
+  - {fileID: 11400000, guid: 404c31650dbabe542988434b908a5f59, type: 2}
+  - {fileID: 11400000, guid: 99ba87ed0ae92fe44a3656d0d0e1e4d0, type: 2}
+  - {fileID: 11400000, guid: a9e35ae7305d0b545aaa0e290e5abd16, type: 2}
+  - {fileID: 11400000, guid: dd8734a6ae3f5ef449389772590eed5c, type: 2}
+  - {fileID: 11400000, guid: cd7d920604949c547aa189abe6436b3f, type: 2}
+  - {fileID: 11400000, guid: da8d9acb78d33e943b0db262b85db33d, type: 2}
+  - {fileID: 11400000, guid: 753d21ee6eed6cf40b63dd43a9436a73, type: 2}
+  - {fileID: 11400000, guid: 784555bf931de8942ba511e8352078ef, type: 2}
+  - {fileID: 11400000, guid: 05e91b35cb9c30a408c761f5a216afc7, type: 2}
+  - {fileID: 11400000, guid: f73457432fd81224494130d2090fe9d2, type: 2}
+  - {fileID: 11400000, guid: 5236d9e8eb8e9624997b85a636c9be4c, type: 2}
+  - {fileID: 11400000, guid: 250a5419555484f48810748d4de48652, type: 2}
+  - {fileID: 11400000, guid: 90d2af1a482007048b2377f829c20ee5, type: 2}
+  - {fileID: 11400000, guid: f3c1fb0ed86351b45b11d706e7daa6e7, type: 2}
+  - {fileID: 11400000, guid: dbc1a97e84837fa45b41df21c7a8e437, type: 2}
+  - {fileID: 11400000, guid: 02d1ca0ec10e30e43a25331e465de797, type: 2}
+  - {fileID: 11400000, guid: 76bebca962b45d7419a70bae0541cddc, type: 2}
+  - {fileID: 11400000, guid: aa3938b752e1c05408a61dbe2c47c0d3, type: 2}
+  - {fileID: 11400000, guid: 888edec5d2b184142a7188405d2da9df, type: 2}
+  - {fileID: 11400000, guid: a3f866f4efcefda4d80e4670382ad243, type: 2}
   _numberOfAttempts: 3

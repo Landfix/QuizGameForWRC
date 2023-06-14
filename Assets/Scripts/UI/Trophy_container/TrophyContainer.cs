@@ -10,7 +10,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _numberOfTrophyText;
         [SerializeField] private TrophyElement _trophyElement;
         [Header("Parameters")]
-        [SerializeField,Range(50,300)] private int _maxNumberOfTrophy;
+        [SerializeField,Range(100,5000)] private int _maxNumberOfTrophy;
 
         public void Initialize(Preferences preferences)
         {
