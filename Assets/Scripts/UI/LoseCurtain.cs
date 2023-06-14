@@ -1,5 +1,6 @@
 ﻿using Systems;
 using DG.Tweening;
+using Sounds_container;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ namespace UI
     public class LoseCurtain : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _canvasGroup;
+        [Header("Sounds")]
+        [SerializeField] private SoundEffect _soundEffect;
 
         private GameSystemHandlers _gameSystemHandlers;
         
@@ -24,6 +27,7 @@ namespace UI
             _canvasGroup.DOFade(1f, 0.3f).SetEase(Ease.Flash).OnComplete(HideCurtain);
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
+            _soundEffect.PlayClip();
         }
 
         private void HideCurtain()

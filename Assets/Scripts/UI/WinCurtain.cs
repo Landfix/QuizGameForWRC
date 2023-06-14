@@ -1,6 +1,7 @@
 ﻿using System;
 using Systems;
 using DG.Tweening;
+using Sounds_container;
 using UnityEngine;
 
 namespace UI
@@ -10,6 +11,8 @@ namespace UI
     {
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private RectTransform _correctIconTransform;
+        [Header("Sounds")] 
+        [SerializeField] private SoundEffect _soundEffect; 
         
         private GameSystemHandlers _gameSystemHandlers;
         
@@ -24,6 +27,7 @@ namespace UI
         {
             ShowCurtain();
             _correctIconTransform.DOScale(Vector2.one * 3, 0.3f).SetEase(Ease.Flash);
+            _soundEffect.PlayClip();
         }
 
         private void ShowCurtain()
