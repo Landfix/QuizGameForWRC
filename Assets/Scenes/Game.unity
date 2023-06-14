@@ -3489,6 +3489,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6617042503111689782, guid: 7de4aa914a099d64892991d7a776d462, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 479117915, guid: 7931b3aa929a20943995fe9bd94eef08, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de4aa914a099d64892991d7a776d462, type: 3}
 --- !u!1001 &8962866341654495792
@@ -3498,6 +3502,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 619345682}
     m_Modifications:
+    - target: {fileID: 5147970865560147078, guid: 713d4437e3bd4514c865e7260df322ea, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 804843150, guid: 7931b3aa929a20943995fe9bd94eef08, type: 3}
     - target: {fileID: 5147970865610864245, guid: 713d4437e3bd4514c865e7260df322ea, type: 3}
       propertyPath: m_Name
       value: WinCurtain

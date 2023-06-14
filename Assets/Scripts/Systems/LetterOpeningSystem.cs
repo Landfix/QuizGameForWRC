@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UI;
+using UI.Containers;
 using Random = UnityEngine.Random;
 
 namespace Systems
@@ -41,16 +42,17 @@ namespace Systems
                 AttemptTaken?.Invoke();
         }
 
-        public void OpenRandomLetter()
+        public void OpenRandomLetter(AlphabeticButtonContainer alphabeticButtonContainer)
         {
             int range = Random.Range(0, _cards.Count);
             if (_cards[range].IsShown)
             {
-                OpenRandomLetter();
+                OpenRandomLetter(alphabeticButtonContainer);
             }
             else
             {
                 _cards[range].ShowText();
+                alphabeticButtonContainer.HideLetterButton(_cards[range].Letter);
             }
         }
 

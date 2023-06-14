@@ -18,7 +18,7 @@ namespace Programmer_container
             switch (attempts)
             {
                 case -1:
-                    Debug.Log("Boom!");
+                    // todo boom
                     break;
                 case 0:
                     _animator.SetBurnState();

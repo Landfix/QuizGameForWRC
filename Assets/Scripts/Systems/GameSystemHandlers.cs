@@ -59,6 +59,8 @@ namespace Systems
             if (!_currentContentConfig)
             {
                 WonGame?.Invoke();
+                _letterOpeningSystem.AttemptTaken -= AttemptTaken;
+                _letterOpeningSystem.GuessedWord -= GuessedWord;
                 return;
             }
 

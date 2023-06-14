@@ -28,8 +28,8 @@ namespace UI.Containers
         private void OnClickHideLetters() => 
             _alphabeticButtonContainer.HideLetterButtons(_answer.ToCharArray());
 
-        private void OnClickOpenLetter() => 
-            _systemHandlers.LetterOpeningSystem.OpenRandomLetter();
+        private void OnClickOpenLetter() =>
+            _systemHandlers.LetterOpeningSystem.OpenRandomLetter(_alphabeticButtonContainer);
 
         private void OnDestroy()
         {

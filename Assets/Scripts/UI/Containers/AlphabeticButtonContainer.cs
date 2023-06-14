@@ -33,6 +33,12 @@ namespace UI.Containers
                 letterButton.UpdateLetterButton();
         }
 
+        public void HideLetterButton(char letter)
+        {
+            LetterButton letterButton = _letterButtons.FirstOrDefault(x => x.Letter == letter);
+            letterButton.HideLetter();
+        }
+
         public void HideLetterButtons(char[] answerValues)
         {
             List<LetterButton> resultLetters = new List<LetterButton>();
