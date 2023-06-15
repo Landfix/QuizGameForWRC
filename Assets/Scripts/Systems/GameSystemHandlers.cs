@@ -6,6 +6,7 @@ namespace Systems
 {
     public class GameSystemHandlers
     {
+        private const int DeleteNumberOfPoints = 2; 
         private LetterOpeningSystem _letterOpeningSystem;
         private List<ContentConfig> _contents;
         private ContentConfig _currentContentConfig;
@@ -49,6 +50,7 @@ namespace Systems
             }
             else
             {
+                _cachedPreferences.RemovePoints(DeleteNumberOfPoints);
                 Lost?.Invoke();
             }
         }

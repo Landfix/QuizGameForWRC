@@ -77,6 +77,14 @@ namespace Systems
             SavePreferences();
         }
         
+        public void RemovePoints(int value)
+        {
+            if (points >= value) 
+                points -= value;
+            
+            SavePreferences();
+        }
+        
         public void SetSoundPlayback(int value, bool isAds = false)
         {
             if (isAds)

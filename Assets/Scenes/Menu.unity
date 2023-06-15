@@ -873,7 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numberOfTrophyText: {fileID: 1209484046}
   _trophyElement: {fileID: 287618396}
-  _maxNumberOfTrophy: 975
+  _maxNumberOfTrophy: 625
 --- !u!1 &1209484044
 GameObject:
   m_ObjectHideFlags: 0
