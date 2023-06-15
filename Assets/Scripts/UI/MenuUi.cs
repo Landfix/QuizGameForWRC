@@ -25,6 +25,9 @@ namespace UI
             _trophyContainer.Initialize(_preferences);
             _soundButton.Initialize(_preferences,_soundEffect);
             _soundButton.ChangedSound += GlobalManager.I.MusicEffect.IsPlaybackMusic;
+            
+            if(GamePush.GP_Ads.IsFullscreenAvailable())
+                GamePush.GP_Ads.ShowFullscreen();
         }
 
         private void OnClickPlay()

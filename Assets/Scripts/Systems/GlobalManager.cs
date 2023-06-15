@@ -16,10 +16,9 @@ namespace Systems
         public override void Awake()
         {
             base.Awake();
-            // GameScore.GS_SDK.OnReady += OnReady;
-            // GameScore.GS_Player.OnPlayerReady += OnPlayerReady;
-            // GameScore.GS_Game.OnPause += OnPause;
-            // GameScore.GS_Game.OnResume += OnResume;
+            GamePush.GP_Player.OnReady += OnPlayerReady;
+            GamePush.GP_Game.OnPause += OnPause;
+            GamePush.GP_Game.OnResume += OnResume;
             
             // todo delete
             _preferences.Init();
@@ -40,10 +39,9 @@ namespace Systems
 
         private void OnDestroy()
         {
-            // GameScore.GS_SDK.OnReady -= OnReady;
-            // GameScore.GS_Player.OnPlayerReady -= OnPlayerReady;
-            // GameScore.GS_Game.OnPause -= OnPause;
-            // GameScore.GS_Game.OnResume -= OnResume;
+            GamePush.GP_Player.OnReady -= OnPlayerReady;
+            GamePush.GP_Game.OnPause -= OnPause;
+            GamePush.GP_Game.OnResume -= OnResume;
         }
 
     }

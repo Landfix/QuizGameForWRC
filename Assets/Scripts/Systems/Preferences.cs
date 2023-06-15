@@ -23,8 +23,8 @@ namespace Systems
         {
             if (_isInitialized) return;
 
-            string prefsString = PlayerPrefs.GetString(PreferencesKey, null);
-            //string prefsString = GameScore.GS_Player.GetString(PreferencesKey);
+            //string prefsString = PlayerPrefs.GetString(PreferencesKey, null);
+            string prefsString = GamePush.GP_Player.GetString(PreferencesKey);
 
             if (string.IsNullOrEmpty(prefsString))
             {
@@ -67,8 +67,8 @@ namespace Systems
             PlayerPrefs.SetString(PreferencesKey, preferencesString);
             
             // todo recast
-            // GameScore.GS_Player.Set(PreferencesKey,preferencesString);
-            // GameScore.GS_Player.Sync();
+            GamePush.GP_Player.Set(PreferencesKey,preferencesString);
+            GamePush.GP_Player.Sync();
         }
 
         public void AddPoints(int value)
