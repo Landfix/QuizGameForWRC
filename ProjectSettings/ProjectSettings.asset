@@ -410,7 +410,10 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    PROJECT_ID: 5735
+    TOKEN: eushavpZ4b49oulGQscLyglpi4RbTVlx
+    X_SHOW_PRELOADER_AD: 
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -660,7 +663,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: PROJECT:GamePush
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0
