@@ -21,8 +21,8 @@ namespace Systems
             GamePush.GP_Game.OnResume += OnResume;
             
             // todo delete
-            _preferences.Init();
-            _musicEffect.Initialize(_preferences);
+            // _preferences.Init();
+            // _musicEffect.Initialize(_preferences);
         }
 
         private void OnPlayerReady()
